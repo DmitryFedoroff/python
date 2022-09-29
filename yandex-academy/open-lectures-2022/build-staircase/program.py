@@ -8,3 +8,4 @@ def build(n):
     return steps
 
 n = int(input('Enter number of blocks: '))
+print(f'Maximum number of steps in staircase: {build(n)}')
