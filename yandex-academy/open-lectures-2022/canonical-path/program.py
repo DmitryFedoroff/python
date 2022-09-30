@@ -20,3 +20,4 @@ def get_canonical_path(path: str) -> str:
     return path
 
 s = input('Enter path: ')
+print(f'Canonical path: {get_canonical_path(s)}')
