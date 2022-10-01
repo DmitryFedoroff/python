@@ -14,3 +14,4 @@ def find_trading_days(n, cost):
 
 n = int(input('Enter number of days: '))
 cost = list(map(int, input('Prices of gas on each of days: ').split()))
+print('Numbers of days for buying and selling gas:', *find_trading_days(n, cost))
