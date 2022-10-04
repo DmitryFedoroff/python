@@ -1,15 +1,15 @@
-def find_trading_days(n, cost):
+def find_trading_days(n, amount, cost):
     min_index = 0
-    max_gas = 1 / cost[0]
+    max_gas = amount / cost[0]
     max_revenue = 0
     trading_days = (0, 0)
     for i in range(1, n):
-        if max_gas * cost[i] - 1 > max_revenue:
-            max_revenue = max_gas * cost[i] - 1
+        if max_gas * cost[i] - amount > max_revenue:
+            max_revenue = max_gas * cost[i] - amount
             trading_days = (min_index + 1, i + 1)
-        if 1 / cost[i] > max_gas:
+        if amount / cost[i] > max_gas:
             min_index = i
-            max_gas = 1 / cost[i]
+            max_gas = amount / cost[i]
     return trading_days
 
 amount = int(input('Enter initial investment: '))
