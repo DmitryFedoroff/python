@@ -14,3 +14,4 @@ def break_palindrome(s):
         return s[:-1] + 'b'
 
 s = input('Enter palindrome: ')
+print(f'Broken palindrome: {break_palindrome(s)}')
