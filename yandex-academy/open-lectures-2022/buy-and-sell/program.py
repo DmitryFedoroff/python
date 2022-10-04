@@ -12,6 +12,7 @@ def find_trading_days(n, cost):
             max_gas = 1 / cost[i]
     return trading_days
 
+amount = int(input('Enter initial investment: '))
 n = int(input('Enter number of days: '))
-cost = list(map(int, input('Prices of gas on each of days: ').split()))
+cost = list(map(int, input('Enter prices of gas on each of days: ').split()))
 print('Numbers of days for buying and selling gas:', *find_trading_days(n, cost))
