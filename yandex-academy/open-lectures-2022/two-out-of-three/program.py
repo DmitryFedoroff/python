@@ -1,0 +1,6 @@
+l1 = (input('Enter length of 1st list: '))
+s1 = set(map(int, input('Enter numbers: ').split()))
+l2 = (input('Enter length of 2nd list: '))
+s2 = set(map(int, input('Enter numbers: ').split()))
+l3 = (input('Enter length of 3rd list: '))
+s3 = set(map(int, input('Enter numbers: ').split()))
