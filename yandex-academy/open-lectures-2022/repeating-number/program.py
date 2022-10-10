@@ -10,3 +10,8 @@ def find_rep_num(nums, k):
 
 n, k = map(int, input('Enter n and k: ').split())
 nums = list(map(int, input('Enter numbers: ').split()))
+
+if find_rep_num(nums, k):
+    print('Yes')
+else:
+    print('No')
