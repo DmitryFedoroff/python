@@ -6,7 +6,7 @@ Given an array of integers of size `n`, find the majority element in the array. 
 
 ## Note:
 
-Input: In the first line, enter `n` number (`1 ≤ n ≤ 5 × 10^4`). In the second line, enter `n` numbers separated by whitespace. The numbers do not exceed 10^9 modulo.
+Input: In the first line, enter `n` number (`1 ≤ n ≤ 5 × 10^4`). In the second line, enter `n` numbers separated by whitespace. The numbers do not exceed `10^9` by their absolute values (modulus).
 
 Output: Print the majority element in the array.
 
