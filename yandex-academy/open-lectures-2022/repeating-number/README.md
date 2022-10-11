@@ -6,7 +6,7 @@ You are given a sequence of measurements of some quantity. It is required to det
 
 ## Note:
 
-Input: In the first line, enter two numbers `n` and `k` (`1 ≤ n, k ≤ 10^5`). In the second line, enter `n` numbers. The numbers should be separated by whitespace and do not exceed 10^9 modulo.
+Input: In the first line, enter two numbers `n` and `k` (`1 ≤ n, k ≤ 10^5`). In the second line, enter `n` numbers. The numbers should be separated by whitespace and do not exceed `10^9` by their absolute values (modulus).
 
 Output: Print `Yes` if there is a repeating number and the distance between repetitions does not exceed `k`, otherwise print `No`.
 
