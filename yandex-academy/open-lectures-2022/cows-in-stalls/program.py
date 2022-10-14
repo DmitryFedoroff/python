@@ -20,3 +20,4 @@ def binary_search(k, stalls):
 
 n, k = map(int, input('Enter number of stalls and cows: ').split())
 stalls = list(map(int, input('Enter stalls coordinates: ').split()))
+print(f'Largest possible allowable distance: {binary_search(k, stalls)}')
