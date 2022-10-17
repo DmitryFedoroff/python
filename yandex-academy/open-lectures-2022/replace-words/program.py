@@ -11,3 +11,4 @@ def replace_words(dict_set):
     return result
 
 dict_set = set(input('Enter words from dictionary: ').split())
+print(f'Text with replacements: {" ".join(replace_words(dict_set))}')
