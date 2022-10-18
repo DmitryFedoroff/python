@@ -12,3 +12,4 @@ def find_number_invitations(n, age):
 
 n = int(input('Number of people: '))
 age = list(map(int, input('Age of people: ').split()))
+print(f'Total number of birthday invitations: {find_number_invitations(n, age)}')
