@@ -13,22 +13,20 @@ Output: Print all the numbers which are present in at least two out of the three
 ## Examples:
 
 ```
-Input:
-2
-3 1
-2
-1 3
-2
-1 2
+Input: 2
+       3 1
+       2
+       1 3
+       2
+       1 2
 Output: 1 3
 ```
 ```
-Input:
-3
-1 2 2
-3
-3 4 3
-1
-5
+Input: 3
+       1 2 2
+       3
+       3 4 3
+       1
+       5
 Output:
 ```
