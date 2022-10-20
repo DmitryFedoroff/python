@@ -18,14 +18,12 @@ Input: 4 2
 Output: No
 ```
 ```
-Input:
-4 1
-1 0 1 1
+Input: 4 1
+       1 0 1 1
 Output: Yes
 ```
 ```
-Input:
-6 2
-1 2 3 1 2 3
+Input: 6 2
+       1 2 3 1 2 3
 Output: No
 ```
