@@ -13,9 +13,8 @@ Output: Print `Yes` if there is a repeating number and the distance between repe
 ## Examples:
 
 ```
-Input:
-4 2
-1 2 3 1
+Input: 4 2
+       1 2 3 1
 Output: No
 ```
 ```
