@@ -10,11 +10,10 @@ Input: In the first line, enter number of stalls `n` (`2 < n < 10001`) and numbe
 
 Output: Print one number - the largest possible allowable distance.
 
-## Examples:
+## Example:
 
 ```
-Input:
-6 3
-2 5 7 11 15 20
+Input: 6 3
+       2 5 7 11 15 20
 Output: 9
 ```
