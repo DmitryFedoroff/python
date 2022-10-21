@@ -44,6 +44,7 @@ def binary_search():
             r = m - 1
     return l
 
-n, k = map(int, input().split())
-utility = list(map(int, input().split()))
+n = int(input('Enter number of ingredients: '))
+k = int(input('Enter number of potions: '))
+utility = list(map(int, input('Enter ingredients utility (higher number is better): ').split()))
 print(f'Maximum total utility of potions: {calc_util(binary_search())}')
