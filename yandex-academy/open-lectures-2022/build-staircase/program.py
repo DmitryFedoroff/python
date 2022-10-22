@@ -9,3 +9,4 @@ def build(n):
 
 n = int(input('Enter number of blocks: '))
 print(f'Maximum number of steps in staircase: {build(n)}')
+print('\n'.join('□ ' * i for i in range(1, build(n) + 1)))
