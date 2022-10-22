@@ -1,4 +1,4 @@
-def find_number_invitations(n, age):
+def count_invites(n, age):
     age.sort()
     left, right, result = 0, 0, 0
     for i in range(n):
@@ -12,4 +12,4 @@ def find_number_invitations(n, age):
 
 n = int(input('Number of people: '))
 age = list(map(int, input('Age of people: ').split()))
-print(f'Total number of birthday invitations: {find_number_invitations(n, age)}')
+print(f'Total number of birthday invitations: {count_invites(n, age)}')
