@@ -33,3 +33,4 @@ def calc_thickness(s):
 
 l, n, m = map(int, input('Enter L M N numbers: ').split())
 data = read_file('socks_ends_data.txt')
+calc_thickness(data)
