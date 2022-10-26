@@ -12,3 +12,4 @@ def read_file(file):
         return contents
 
 l, n, m = map(int, input('Enter L M N numbers: ').split())
+data = read_file('socks_ends_data.txt')
