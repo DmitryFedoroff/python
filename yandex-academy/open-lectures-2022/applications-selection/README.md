@@ -8,7 +8,7 @@ A lecture room is given, where several professors want to give their lectures. F
 
 In the first line, enter a natural number `n` (`1 ≤ n ≤ 1000`) - the total number of applications. Then `n` lines with descriptions of applications are entered - two numbers in each `si` and `fi`. It is guaranteed that `si` < `fi`. The time of the beginning and the end of the lecture is a natural number, not exceeding `1440` (in minutes from the beginning of the day).
 
-Output: Print one number - the maximum number of application that can be fulfilled.
+Output: Print one number - the maximum number of applications that can be fulfilled.
 
 ## Examples:
 
