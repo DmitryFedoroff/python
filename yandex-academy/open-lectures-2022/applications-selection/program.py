@@ -13,3 +13,4 @@ def find_max_applic(n):
     return count
 
 n = int(input('Enter number of applications: '))
+print(f'Max number of applications can be fulfilled: {find_max_applic(n)}')
