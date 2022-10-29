@@ -10,7 +10,7 @@ def find_trading_days(n, amount, cost):
         if amount / cost[i] > max_gas:
             min_index = i
             max_gas = amount / cost[i]
-    return trading_days
+    return trading_days, max_revenue
 
 amount = int(input('Enter initial investment: '))
 n = int(input('Enter number of days: '))
