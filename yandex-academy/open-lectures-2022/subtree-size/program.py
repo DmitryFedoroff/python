@@ -24,3 +24,4 @@ def store_subtrees_size(n):
     return subtree_size[1:]
 
 n = int(input('Number of vertices: '))
+print('Size of subtree for each of vertices: ', *store_subtrees_size(n))
