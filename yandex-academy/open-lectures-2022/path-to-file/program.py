@@ -13,3 +13,4 @@ def find_path(query, n):
 
 query = input('Enter file name: ')
 n = int(input('Enter total number of files and directories: '))
+print(f'Path to file: {find_path(query, n)}')
