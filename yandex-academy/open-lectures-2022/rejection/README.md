@@ -10,7 +10,7 @@ In view of the difficult economic situation, it was decided not to throw out sub
 
 ## Note:
 
-Input: In the first line, enter `n` (`1 ≤ n ≤ 5000`) - the number of substances on the list of desirable substances. In the second line, enter `n` words with a space - the list of desirable substances. In the third line, enter the number `k` (`1 ≤ k ≤ 5000`) - the number of substances obtained in the reactor. In the fourth line, enter `k` words separated by whitespace - the list of substances obtained in the reactor. The length of all words does not exceed 7.
+Input: In the first line, enter `n` (`1 ≤ n ≤ 5000`) - the number of substances on the list of desirable substances. In the second line, enter `n` words separated by whitespace - the list of desirable substances. In the third line, enter the number `k` (`1 ≤ k ≤ 5000`) - the number of substances obtained in the reactor. In the fourth line, enter `k` words separated by whitespace - the list of substances obtained in the reactor. The length of all words does not exceed 7.
 
 Output: For each substance, print:
 
@@ -31,7 +31,7 @@ Input: 4
        LiTe lite bare Bare
        10
        Bare BARE Bear bear lite Lite LiTe leti leet leto
-Output: Bare bare lite LiTe LiTe LiTe LiTe
+Output: Bare bare   lite LiTe LiTe LiTe  LiTe
 ```
 ```
 Input: 1
