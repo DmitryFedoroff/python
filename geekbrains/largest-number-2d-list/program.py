@@ -10,6 +10,9 @@ def get_int_input(value):
             print("Input value is not integer. Please try again ...")
 
 
+def print_list(lst): [print(*x, sep='\t') for x in lst]
+
+
 if __name__ == '__main__':
     row = get_int_input("Enter number of rows: ")
     col = get_int_input("Enter number of columns: ")
