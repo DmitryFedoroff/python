@@ -13,6 +13,9 @@ def get_int_input(value):
 def print_list(lst): [print(*x, sep='\t') for x in lst]
 
 
+def find_max(lst): return max(max(x) for x in lst)
+
+
 if __name__ == '__main__':
     row = get_int_input("Enter number of rows: ")
     col = get_int_input("Enter number of columns: ")
