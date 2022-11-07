@@ -24,3 +24,4 @@ if __name__ == '__main__':
     list_2d = [[randint(start, end) for x in range(col)] for y in range(row)]
     print("Two-dimensional list: ")
     print_list(list_2d)
+    print(f"Largest number: {find_max(list_2d)}")
