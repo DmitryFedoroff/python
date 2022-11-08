@@ -1,7 +1,7 @@
 def get_int_input(value):
     while True:
         try:
-            s = input(f"{value}")
+            s = input(value)
             return int(s)
         except ValueError:
             print("Input value is not integer. Please try again ...")
