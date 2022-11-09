@@ -8,5 +8,8 @@ def get_float_input(value):
     return float(s)
 
 
+def get_fract_digit(num): return int(abs(num * 10) % 10)
+
+
 if __name__ == '__main__':
     n = get_float_input("Enter decimal number: ")
