@@ -13,3 +13,4 @@ def get_fract_digit(num): return int(abs(num * 10) % 10)
 
 if __name__ == '__main__':
     n = get_float_input("Enter decimal number: ")
+    print(f"First digit of fractional part: {get_fract_digit(n)}")
