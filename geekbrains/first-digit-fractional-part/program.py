@@ -8,7 +8,7 @@ def get_float_input(value):
     return float(s)
 
 
-def get_fract_digit(num): return int(abs(num * 10) % 10)
+def get_fract_digit(fnum): return int(abs(fnum * 10) % 10)
 
 
 if __name__ == '__main__':
