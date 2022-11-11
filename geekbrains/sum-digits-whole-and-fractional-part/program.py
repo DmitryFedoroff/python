@@ -8,5 +8,9 @@ def get_float_input():
     return float(s)
 
 
+def sum_digits(fnum):
+    return [sum(map(int, list(x))) for x in str(abs(fnum)).split('.')]
+
+
 if __name__ == '__main__':
     n = get_float_input()
