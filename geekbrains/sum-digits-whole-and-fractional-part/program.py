@@ -14,3 +14,4 @@ def sum_digits(fnum):
 
 if __name__ == '__main__':
     n = get_float_input()
+    print(*sum_digits(n))
