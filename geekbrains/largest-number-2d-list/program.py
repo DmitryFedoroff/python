@@ -17,11 +17,8 @@ def find_max(lst): return max(max(x) for x in lst)
 
 
 if __name__ == '__main__':
-    row = get_int_input("Enter number of rows: ")
-    col = get_int_input("Enter number of columns: ")
-    start = get_int_input("Enter lower limit of range: ")
-    end = get_int_input("Enter upper limit of range: ")
+    row, col = get_int_input()
+    start, end = get_int_input()
     list_2d = [[randint(start, end) for x in range(col)] for y in range(row)]
-    print("Two-dimensional list: ")
     print_list(list_2d)
-    print(f"Largest number: {find_max(list_2d)}")
+    print(find_max(list_2d))
