@@ -1,11 +1,10 @@
 from random import *
 
 
-def get_int_input(value):
+def get_int_input():
     while True:
         try:
-            s = input(value)
-            return int(s)
+            return list(map(int, input().split()))
         except ValueError:
             print("Input value is not integer. Please try again ...")
 
