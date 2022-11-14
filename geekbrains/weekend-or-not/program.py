@@ -17,5 +17,5 @@ def check_day(num):
 
 
 if __name__ == '__main__':
-    day_num = get_int_input("Enter day number: ")
+    day_num = get_int_input()
     check_day(day_num)
