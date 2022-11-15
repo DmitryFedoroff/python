@@ -18,5 +18,5 @@ def check_day(lst, num):
 
 if __name__ == '__main__':
     weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-    day_num = get_int_input("Enter day number: ")
+    day_num = get_int_input()
     check_day(weekdays, day_num)
