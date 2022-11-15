@@ -1,7 +1,7 @@
-def get_int_input(value):
+def get_int_input():
     while True:
         try:
-            s = input(value)
+            s = input()
             return int(s)
         except ValueError:
             print("Input value is not integer. Please try again ...")
