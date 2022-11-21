@@ -22,4 +22,4 @@ def get_coord_quadrant(x, y):
 if __name__ == '__main__':
     px = get_num_input()
     py = get_num_input()
-
+    print(get_coord_quadrant(px, py))
