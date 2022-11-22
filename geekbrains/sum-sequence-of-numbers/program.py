@@ -13,3 +13,4 @@ def summ_sequence(n):
 
 if __name__ == '__main__':
     num = get_int_input()
+    print(summ_sequence(num))
