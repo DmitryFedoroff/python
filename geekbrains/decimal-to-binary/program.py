@@ -13,3 +13,4 @@ def dec_to_bin(n):
 
 if __name__ == '__main__':
     num = get_int_input()
+    print(dec_to_bin(num))
