@@ -13,3 +13,4 @@ def create_dict(n):
 
 if __name__ == '__main__':
     num = get_int_input()
+    print(create_dict(num))
