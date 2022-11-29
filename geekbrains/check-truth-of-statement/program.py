@@ -4,3 +4,7 @@ def check_statement():
         for y in bool_vals:
             for z in bool_vals:
                 print(x, y, z, "-", (not (x or y or z) == ((not x) and (not y) and (not z))))
+
+
+if __name__ == '__main__':
+    check_statement()
