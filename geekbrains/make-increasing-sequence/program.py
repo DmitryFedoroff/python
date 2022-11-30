@@ -20,3 +20,4 @@ if __name__ == '__main__':
     n = get_int_input()
     lst = [random.randint(1, 10) for i in range(n)]
     print(*lst)
+    print(*make_incr_seq(lst))
