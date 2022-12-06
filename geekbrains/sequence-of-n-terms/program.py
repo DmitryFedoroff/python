@@ -13,3 +13,4 @@ def get_seq(n):
 
 if __name__ == '__main__':
     num = get_int_input()
+    print(*get_seq(num))
