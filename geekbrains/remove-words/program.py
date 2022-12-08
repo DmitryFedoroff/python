@@ -3,3 +3,4 @@ def rem_words(text):
 
 
 my_text = 'Write abc program thabct removes abcll words contabcining'
+print(*rem_words(my_text))
