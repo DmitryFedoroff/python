@@ -1,12 +1,12 @@
 # Python
 
-This repository holds the most interesting solutions, exercises, homeworks done in Python language since I've been studying at some massive programming courses provided at the educational online platforms such as GeekBrains, Yandex Academy, etc.
+This repository holds the most interesting solutions, exercises, and homework done in the Python language that I've completed while studying at a comprehensive programming course provided by the GeekBrains educational online platform., Yandex Academy, etc.
 
 ## Conventional commits
 
-All commits must adhere to [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) spec.
+All commits must adhere to the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
 
-Most of the commit types originally from:
+Most of the commit types originate from:
 * [Angular Git Commit Message Conventions](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#type)
 * [commitizen/cz-conventional-changelog](https://github.com/commitizen/cz-conventional-changelog)
 * [conventional-commit-types](https://github.com/commitizen/conventional-commit-types)
@@ -18,7 +18,7 @@ Most of the commit types originally from:
 | `chore`     | Chores                    | Changes that don't modify src or test files                                                                 |
 | `ci`        | Continuous Integrations   | Changes to CI configuration files and scripts                                                               |
 | `dc`        | Driver Code / Driver Class| A driver code or class that drives the execution of the overall task                                        |
-| `docs`      | Documentation             | Documentation only changes                                                                                  |
+| `doc`       | Documentation             | Documentation only changes                                                                                  |
 | `feat`      | Features                  | A new feature                                                                                               |
 | `fix`       | Bug Fixes                 | A bug fix                                                                                                   |
 | `perf`      | Performance Improvements  | A code change that improves performance                                                                     |
@@ -27,9 +27,9 @@ Most of the commit types originally from:
 | `revert`    | Reverts                   | Reverts a previous commit                                                                                   |
 | `style`     | Styles                    | Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)      |
 | `test`      | Tests                     | Adding missing tests or correcting existing tests                                                           |
-| `theme`     | Themes                    | Changes related to UI theming                                                                               |
+| `theme`     | Themes                    | Changes related to UI theming                        
 
-When adding a new file to the Git repository none of the above commit types is used.
+When adding a new file to the Git repository, none of the above commit types are used.
 
 ## Conventions
 
@@ -46,15 +46,15 @@ Branch identifiers must adhere to the format `type/description-of-the-change`.
 * `refactor` for enhancing one or more units of code, without affecting the app's behaviour
 * `test` for all test-related activities (adding a new test suite, introducing a new test into an existing test suite, or improving/modifying the performance or behaviour of an existing test)
 
-_description of change_ must be a succinct and significant depiction of the expected change outcome; words should be separated by a dash `-`
+The _description of change_ must be a succinct and significant depiction of the expected change outcome; words should be separated by a dash `-`.
 
-The entire branch name must be in lower case.
+The entire branch name must be in lowercase.
 
 ### Commit Message Format
 
 The prescribed format for a commit message is as follows:
 
-```
+```bash
 <Title of the commit>
 
 #comment <Description of the changes>
@@ -75,7 +75,7 @@ git commit -m "<Type>: <Title of the commit>" -m "#comment <Description of the c
 
 In this template:
 
-* `<Type>`: This is the type of commit, such as feat, fix, docs, etc.
+* `<Type>`: This is the type of commit, such as `feat`, `fix`, `doc`, etc.
 * `<Title of the commit>`: This is a brief, clear summary of the changes the commit introduces.
 * `<Description of the changes>`: This is a more detailed explanation of what changes the commit introduces.
 * `<List of affected classes or behaviours>`: This is a list of classes or behaviours that are affected by the changes introduced in the commit.
