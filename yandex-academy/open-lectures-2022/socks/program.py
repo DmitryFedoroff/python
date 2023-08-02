@@ -21,15 +21,16 @@ def count_occur(s):
     return balance, result
 
 def calc_thickness(s):
-    balance = count_occur(s)[0]
-    result = count_occur(s)[1]
+    balance, _ = count_occur(s)
     now = 0
+    result = [0] * l
     for i in range(l):
         now = now + balance[i]
         result[i] = now
     for i in range(m):
         query = int(input('Enter point number: ')) - 1
         print(f'Thickness of sock coating: {result[query]}')
+
 
 l, n, m = map(int, input('Enter L M N numbers: ').split())
 data = read_file('socks_ends_data.txt')
