@@ -1,15 +1,18 @@
-def count_invites(n, age):
-    age.sort()
-    left, right, result = 0, 0, 0
-    for i in range(n):
-        while (left < n) and (age[left] <= 0.5 * age[i] + 7):
+def count_birthday_invitations(people_ages):
+    people_ages.sort()
+    count = 0
+    left = 0
+    right = 0
+    for i in range(len(people_ages)):
+        while left < len(people_ages) and people_ages[left] <= 0.5 * people_ages[i] + 7:
             left += 1
-        while (right < n) and (age[right] <= age[i]):
+        while right < len(people_ages) and people_ages[right] <= people_ages[i]:
             right += 1
-        if right > left + 1:
-            result += right - left - 1
-    return result
+        count += max(0, right - left - 1)
+    return count
 
-n = int(input('Number of people: '))
-age = list(map(int, input('Age of people: ').split()))
-print(f'Total number of birthday invitations: {count_invites(n, age)}')
+
+if __name__ == '__main__':
+    num_people = int(input('Number of people: '))
+    ages = map(int, input('Age of people: ').split())
+    print(f'Total number of birthday invitations: {count_birthday_invitations(list(ages))}')
