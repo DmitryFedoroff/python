@@ -1,25 +1,23 @@
-def build(n):
-    now_in_step = 1
-    steps = 0
-    while n >= now_in_step:
-        n -= now_in_step
-        steps += 1
-        now_in_step += 1
-    return steps
+def calculate_steps(block_count):
+    step, remaining_blocks = 1, block_count
+    while remaining_blocks >= step:
+        remaining_blocks -= step
+        step += 1
+    return step - 1
 
 
-def print_staircase(n):
-    now_in_step = 1
-    blocks = 0
-    for i in range(1, n + 1):
+def print_staircase(block_count):
+    step, blocks_in_step = 1, 0
+    for _ in range(block_count):
         print("\u25A1", end=" ")
-        blocks += 1
-        if blocks == now_in_step:
+        blocks_in_step += 1
+        if blocks_in_step == step:
             print()
-            now_in_step += 1
-            blocks = 0
+            step += 1
+            blocks_in_step = 0
 
 
-n = int(input('Enter number of blocks: '))
-print(f'Maximum number of steps in staircase: {build(n)}')
-print_staircase(n)
+if __name__ == '__main__':
+    block_count = int(input('Enter number of blocks: '))
+    print(f'Maximum number of steps in staircase: {calculate_steps(block_count)}')
+    print_staircase(block_count)
