@@ -1,19 +1,18 @@
-def find_trading_days(n, amount, cost):
-    min_index = 0
-    max_gas = amount / cost[0]
-    max_revenue = 0
-    trading_days = (0, 0)
-    for i in range(1, n):
-        if max_gas * cost[i] - amount > max_revenue:
-            max_revenue = max_gas * cost[i] - amount
-            trading_days = (min_index + 1, i + 1)
-        if amount / cost[i] > max_gas:
-            min_index = i
-            max_gas = amount / cost[i]
-    return trading_days, max_revenue
+def find_optimal_trading_days(num_days, investment, prices):
+    buy_day, sell_day, max_profit, min_price_day = 0, 0, 0, 0
+    for i in range(1, num_days):
+        profit = prices[i] * investment / prices[min_price_day] - investment
+        if profit > max_profit:
+            buy_day, sell_day, max_profit = min_price_day + 1, i + 1, profit
+        if prices[i] < prices[min_price_day]:
+            min_price_day = i
+    return (0, 0) if max_profit == 0 else (buy_day, sell_day), round(max_profit, 2)
 
-amount = int(input('Enter initial investment: '))
-n = int(input('Enter number of days: '))
-cost = list(map(int, input('Enter prices of gas on each of days: ').split()))
-print('Numbers of days for buying and selling gas:', *find_trading_days(n, amount, cost)[0])
-print('Max revenue:', find_trading_days(n, amount, cost)[1])
+
+if __name__ == "__main__":
+    investment = int(input("Enter initial investment: "))
+    num_days = int(input("Enter number of days: "))
+    prices = list(map(int, input("Enter prices of gas on each of days: ").split()))
+    days, profit = find_optimal_trading_days(num_days, investment, prices)
+    print(f"Numbers of days for buying and selling gas: {days[0]} {days[1]}")
+    print(f"Max revenue: {profit}")
