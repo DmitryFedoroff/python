@@ -1,23 +1,15 @@
-def get_canonical_path(path: str) -> str:
-    flag = True
-    path += '/'
-    while flag:
-        if '/./' in path:
-            path = path.replace('/./', '/')
-        elif '//' in path:
-            path = path.replace('//', '/')
-        elif '/../' in path:
-            pos = path.find('/../')
-            if pos == 0:
-                path = path[3:]
-            else:
-                prev_slash_pos = path.rfind('/', 0, pos - 1)
-                path = path[:prev_slash_pos] + path[pos + 3:]
-        else:
-            flag = False
-    if path.endswith('/') and path != '/':
-        path = path[:-1]
-    return path
+def canonical_path(path: str) -> str:
+    stack = []
+    path_parts = path.split('/')
+    for part in path_parts:
+        if part == '..':
+            if stack:
+                stack.pop()
+        elif part and part != '.':
+            stack.append(part)
+    return '/' + '/'.join(stack)
 
-s = input('Enter path: ')
-print(f'Canonical path: {get_canonical_path(s)}')
+
+if __name__ == '__main__':
+    input_path = input('Enter path: ')
+    print(f'Canonical path: {canonical_path(input_path)}')
