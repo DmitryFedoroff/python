@@ -1,23 +1,25 @@
-def count_cows(distance, k, stalls):
-    counter = 1
-    prev_pos = stalls[0]
-    for i in range(1, len(stalls)):
-        if stalls[i] - prev_pos >= distance:
-            counter += 1
-            prev_pos = stalls[i]
-    return counter >= k
+def count_cows(min_distance, num_cows, stalls):
+    count, last_stall = 1, stalls[0]
+    for stall in stalls[1:]:
+        if stall - last_stall >= min_distance:
+            count += 1
+            last_stall = stall
+    return count >= num_cows
 
-def binary_search(k, stalls):
-    left_bound = 0
-    right_bound = stalls[-1]
-    while right_bound > left_bound:
-        distance = (left_bound + right_bound + 1) // 2
-        if count_cows(distance, k, stalls):
-            left_bound = distance
+
+def find_max_distance(num_cows, stalls):
+    stalls.sort()
+    low, high = 0, stalls[-1] - stalls[0]
+    while low < high:
+        mid = (low + high + 1) // 2
+        if count_cows(mid, num_cows, stalls):
+            low = mid
         else:
-            right_bound = distance - 1
-    return left_bound
+            high = mid - 1
+    return low
 
-n, k = map(int, input('Enter number of stalls and cows: ').split())
-stalls = list(map(int, input('Enter stalls coordinates: ').split()))
-print(f'Largest possible allowable distance: {binary_search(k, stalls)}')
+
+if __name__ == '__main__':
+    num_stalls, num_cows = map(int, input('Enter number of stalls and cows: ').split())
+    stalls = list(map(int, input('Enter stalls coordinates: ').split()))
+    print(f'Largest possible allowable distance: {find_max_distance(num_cows, stalls)}')
