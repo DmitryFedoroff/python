@@ -1,18 +1,25 @@
-def seat_groups(class_cap, group_size):
-    group_size.sort()
-    class_cap.sort()
-    pos = 0
-    result = 0
-    for now in group_size:
-        while pos < len(class_cap) and class_cap[pos] < now:
-            pos += 1
-        if pos != len(class_cap):
-            result += 1
-            pos += 1
-    return result
+from itertools import islice
 
-n = int(input('Enter number of classrooms: '))
-class_cap = list(map(int, input('Enter capacity of each classroom: ').split()))
-m = int(input('Enter number of groups: '))
-group_size = list(map(int, input('Enter number of students in each group: ').split()))
-print(f'Maximum number of groups can be seated: {seat_groups(class_cap, group_size)}')
+
+def maximize_seating(classroom_capacities, group_sizes):
+    classroom_capacities.sort()
+    group_sizes.sort()
+    position = 0
+    total_seated_groups = 0
+    for group_size in group_sizes:
+        classroom_capacities = islice((cap for cap in classroom_capacities if cap >= group_size), position, None)
+        try:
+            next(classroom_capacities)
+            total_seated_groups += 1
+            position += 1
+        except StopIteration:
+            break
+    return total_seated_groups
+
+
+if __name__ == '__main__':
+    number_of_classrooms = int(input('Enter number of classrooms: '))
+    classroom_capacities = list(map(int, input('Enter capacity of each classroom: ').split()))
+    number_of_groups = int(input('Enter number of groups: '))
+    group_sizes = list(map(int, input('Enter number of students in each group: ').split()))
+    print(f'Maximum number of groups that can be seated: {maximize_seating(classroom_capacities, group_sizes)}')
