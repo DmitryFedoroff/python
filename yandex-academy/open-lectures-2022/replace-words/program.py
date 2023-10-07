@@ -1,14 +1,14 @@
-def replace_words(dict_set):
-    result = []
-    for word in input('Enter words of text: ').split():
-        for i in range(1, min(101, len(word))):
-            part = word[:i]
-            if part in dict_set:
-                result.append(part)
+def replace_words(dictionary, text):
+    words = text.split()
+    for index, word in enumerate(words):
+        for i in range(1, min(101, len(word) + 1)):
+            if word[:i] in dictionary:
+                words[index] = word[:i]
                 break
-        else:
-            result.append(word)
-    return result
+    return words
 
-dict_set = set(input('Enter words from dictionary: ').split())
-print(f'Text with replacements: {" ".join(replace_words(dict_set))}')
+
+if __name__ == '__main__':
+    dictionary = set(input('Enter words from dictionary: ').split())
+    text = input('Enter words of text: ')
+    print('Text with replacements:', ' '.join(replace_words(dictionary, text)))
