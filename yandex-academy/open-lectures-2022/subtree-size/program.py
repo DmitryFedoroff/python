@@ -1,27 +1,23 @@
-import sys
+def dfs(vertex, graph, subtree_size):
+    subtree_size[vertex] = 1
+    for neighbor in graph[vertex]:
+        if subtree_size[neighbor] == -1:
+            subtree_size[vertex] += dfs(neighbor, graph, subtree_size)
+    return subtree_size[vertex]
 
-sys.setrecursionlimit(100000)
 
-def dfs(now, neighbours, subtree_size):
-    subtree_size[now] = 1
-    for next in neighbours[now]:
-        if subtree_size[next] == -1:
-            subtree_size[now] += dfs(next, neighbours, subtree_size)
-    return subtree_size[now]
-
-def store_subtrees_size(n):
-    neighbours = []
-    for i in range(n + 1):
-        neighbours.append([])
-
-    for i in range(n - 1):
+def compute_subtrees_size(num_vertices):
+    graph = [[] for _ in range(num_vertices + 1)]
+    for _ in range(num_vertices - 1):
         a, b = map(int, input('Enter vertices connected by edge: ').split())
-        neighbours[a].append(b)
-        neighbours[b].append(a)
-       
-    subtree_size = [-1] * (n + 1)
-    dfs(1, neighbours, subtree_size)
+        graph[a].append(b)
+        graph[b].append(a)
+
+    subtree_size = [-1] * (num_vertices + 1)
+    dfs(1, graph, subtree_size)
     return subtree_size[1:]
 
-n = int(input('Number of vertices: '))
-print('Size of subtree for each of vertices: ', *store_subtrees_size(n))
+
+if __name__ == '__main__':
+    num_vertices = int(input('Number of vertices: '))
+    print('Size of subtree for each of vertices: ', *compute_subtrees_size(num_vertices))
