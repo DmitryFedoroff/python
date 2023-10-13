@@ -1,37 +1,31 @@
-import os.path
+def read_file(file_path):
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            return f.read().strip().split('\n')
+    except FileNotFoundError:
+        print(f'File {file_path} does not exist')
+        return []
+    except OSError:
+        print(f'An error occurred while reading {file_path}')
+        return []
 
-def read_file(file):
-    if not os.path.isfile(file):
-        print(f'File {file} does not exist')
-    elif os.path.getsize(file) == 0:
-        print(f'File {file} is empty')
-    else:
-        with open(file, 'r', encoding='utf-8') as f:
-            contents = f.read().split('\n')
-            print(f'File "{file}" read successfully')
-        return contents
 
-def count_occur(s):
-    balance = [0] * (l + 1)
-    result = [0] * (l + 1)
-    for i in range(n):
-        left, right = map(int, s[i].split())
-        balance[left - 1] += 1
+def calculate_thickness(socks_data, length, num_queries):
+    balance = [0] * (length + 1)
+    for left, right in socks_data:
+        balance[left] += 1
         balance[right] -= 1
-    return balance, result
-
-def calc_thickness(s):
-    balance, _ = count_occur(s)
-    now = 0
-    result = [0] * l
-    for i in range(l):
-        now = now + balance[i]
-        result[i] = now
-    for i in range(m):
+    thickness = 0
+    result = [0] * length
+    for i in range(length):
+        thickness += balance[i]
+        result[i] = thickness
+    for _ in range(num_queries):
         query = int(input('Enter point number: ')) - 1
         print(f'Thickness of sock coating: {result[query]}')
 
 
-l, n, m = map(int, input('Enter L M N numbers: ').split())
-data = read_file('socks_ends_data.txt')
-calc_thickness(data)
+if __name__ == '__main__':
+    length, num_segments, num_queries = map(int, input('Enter L, N, M: ').split())
+    socks_data = [(int(x.split()[0]) - 1, int(x.split()[1])) for x in read_file('socks_ends_data.txt')]
+    calculate_thickness(socks_data, length, num_queries)
