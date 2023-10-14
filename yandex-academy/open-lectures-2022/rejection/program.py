@@ -1,34 +1,25 @@
-def unvovel(s):
-     s = s.lower()
-     for vovel in 'aeuio':
-         s = s.replace(vovel, '#')
-     return s
-     
-def check_spelling(wordlist, queries):
-    dct = set()
-    dct_lower = {}
-    dct_unvovel = {}
-    for word in wordlist:
-        dct.add(word)
-        if word.lower() not in dct_lower:
-            dct_lower[word.lower()] = word
-        unvoveled = unvovel(word)
-        if unvoveled not in dct_unvovel:
-            dct_unvovel[unvoveled] = word
-    result = []
-    for word in queries:
-        if word in dct:
-            result.append(word)
-        elif word.lower() in dct_lower:
-            result.append(dct_lower[word.lower()])
-        elif unvovel(word) in dct_unvovel:
-            result.append(dct_unvovel[unvovel(word)])
-        else:
-            result.append('')
-    return result
+def replace_vowels(word):
+    return word.lower().translate(str.maketrans("aeuio", "#####"))
 
-dct_len = int(input('Enter number of substances in list of desirable substances: '))
-dct = list(input('Enter list of desirable substances: ').split())
-txt_len = int(input('Enter number of substances obtained in the reactor: '))
-txt = list(input('Enter list of substances obtained in the reactor: ').split())
-print('Result: ', *check_spelling(dct, txt))
+
+def check_spelling(word_list, queries):
+    word_set = set(word_list)
+    word_lower_map = {word.lower(): word for word in reversed(word_list)}
+    word_unvowel_map = {}
+    for word in reversed(word_list):
+        unvoweled_word = replace_vowels(word)
+        word_unvowel_map[unvoweled_word] = word
+    return [
+        word if word in word_set else
+        word_lower_map.get(word.lower(), '') or
+        word_unvowel_map.get(replace_vowels(word), '')
+        for word in queries
+    ]
+
+
+if __name__ == '__main__':
+    num_words = int(input('Enter number of substances in list of desirable substances: '))
+    word_list = input('Enter list of desirable substances: ').split()
+    num_queries = int(input('Enter number of substances obtained in the reactor: '))
+    queries = input('Enter list of substances obtained in the reactor: ').split()
+    print('Result:', *check_spelling(word_list, queries))
