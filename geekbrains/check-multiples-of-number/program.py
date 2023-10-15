@@ -1,16 +1,16 @@
-def get_int_input():
+def get_integer_input(prompt="Enter an integer: ") -> int:
     while True:
+        user_input = input(prompt).strip()
         try:
-            s = input()
-            return int(s)
+            return int(user_input)
         except ValueError:
-            print("Input value is not integer. Please try again ...")
+            print("Invalid input. Please enter a valid integer.")
 
 
-def check_multiple(n):
-    return (n % 5 == 0 or n % 10 == 0 or n % 15 == 0) and n % 30 != 0
+def is_special_multiple(number: int) -> bool:
+    return number % 30 in {5, 10, 15}
 
 
 if __name__ == '__main__':
-    num = get_int_input()
-    print(check_multiple(num))
+    user_input = get_integer_input()
+    print(is_special_multiple(user_input))
