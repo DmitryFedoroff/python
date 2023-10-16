@@ -1,9 +1,6 @@
 def check_statement():
-    bool_vals = range(2)
-    for x in bool_vals:
-        for y in bool_vals:
-            for z in bool_vals:
-                print(x, y, z, "-", (not (x or y or z) == ((not x) and (not y) and (not z))))
+    for x, y, z in ((a, b, c) for a in range(2) for b in range(2) for c in range(2)):
+        print(x, y, z, "-", not (x or y or z) == (not x and not y and not z))
 
 
 if __name__ == '__main__':
