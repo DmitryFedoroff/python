@@ -1,16 +1,16 @@
-def get_int_input():
+def get_integer_input(prompt="Enter an integer: ") -> int:
     while True:
+        user_input = input(prompt).strip()
         try:
-            s = input()
-            return int(s)
+            return int(user_input)
         except ValueError:
-            print("Input value is not integer. Please try again ...")
+            print("Invalid input. Please enter a valid integer.")
 
 
-def dec_to_bin(n):
-    return n if n in {0, 1} else n % 2 + 10 * dec_to_bin(n // 2)
+def decimal_to_binary(n: int) -> str:
+    return bin(n)[2:]
 
 
 if __name__ == '__main__':
-    num = get_int_input()
-    print(dec_to_bin(num))
+    number = get_integer_input()
+    print(decimal_to_binary(number))
