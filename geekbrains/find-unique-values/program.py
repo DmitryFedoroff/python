@@ -1,23 +1,23 @@
+from collections import Counter
 import random
 
 
-def get_int_input():
+def get_integer_input(prompt="Enter an integer: ") -> int:
     while True:
+        user_input = input(prompt).strip()
         try:
-            s = input()
-            return int(s)
+            return int(user_input)
         except ValueError:
-            print("Input value is not integer. Please try again ...")
+            print("Invalid input. Please enter a valid integer.")
 
 
-def find_uniq_vals(ls):
-    uniq = []
-    [uniq.append(x) for x in ls if ls.count(x) == 1]
-    return uniq
+def find_unique_values(nums):
+    num_counts = Counter(nums)
+    return [num for num, count in num_counts.items() if count == 1]
 
 
 if __name__ == '__main__':
-    n = get_int_input()
-    lst = [random.randint(1, 10) for i in range(n)]
-    print(*lst)
-    print(*find_uniq_vals(lst))
+    num_elements = get_integer_input()
+    random_nums = [random.randint(1, 10) for _ in range(num_elements)]
+    print(*random_nums)
+    print(*find_unique_values(random_nums))
