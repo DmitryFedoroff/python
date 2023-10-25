@@ -1,23 +1,26 @@
 import random
 
 
-def get_int_input():
+def get_integer_input(prompt="Enter an integer: ") -> int:
     while True:
+        user_input = input(prompt).strip()
         try:
-            s = input()
-            return int(s)
+            return int(user_input)
         except ValueError:
-            print("Input value is not integer. Please try again ...")
+            print("Invalid input. Please enter a valid integer.")
 
 
-def make_incr_seq(ls):
-    seq = []
-    [seq.append(ls[i]) for i in range(len(ls)) if ls[i] == max(ls[:i + 1:]) and ls[i] not in seq]
-    return seq
+def make_incr_seq(lst):
+    max_val = float('-inf')
+    for num in lst:
+        if num > max_val:
+            max_val = num
+            yield num
 
 
 if __name__ == '__main__':
-    n = get_int_input()
-    lst = [random.randint(1, 10) for i in range(n)]
-    print(*lst)
-    print(*make_incr_seq(lst))
+    list_size = get_integer_input("Enter the size of the list: ")
+    random_list = [random.randint(1, 10) for _ in range(list_size)]
+    print("Original list:", *random_list)
+    incr_seq = list(make_incr_seq(random_list))
+    print("Increasing sequence:", *incr_seq)
