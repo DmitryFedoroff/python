@@ -1,17 +1,13 @@
-def get_int_input():
+def get_integer_input(prompt="Enter an integer: ") -> int:
     while True:
+        user_input = input(prompt).strip()
         try:
-            s = input()
-            return int(s)
+            return int(user_input)
         except ValueError:
-            print("Input value is not integer. Please try again ...")
-
-
-def find_range(quarter, ranges):
-    return ranges[quarter-1]
+            print("Invalid input. Please enter a valid integer.")
 
 
 if __name__ == '__main__':
-    r = ['(x > 0, y > 0)', '(x < 0, y > 0)', '(x < 0, y < 0)', '(x > 0, y < 0)']
-    q = get_int_input()
-    print(find_range(q, r))
+    quadrant_ranges = ['(x > 0, y > 0)', '(x < 0, y > 0)', '(x < 0, y < 0)', '(x > 0, y < 0)']
+    quadrant_number = get_integer_input("Range of admissible values in each of 4 quadrants. Enter the quadrant number (1-4): ")
+    print(quadrant_ranges[quadrant_number - 1])
