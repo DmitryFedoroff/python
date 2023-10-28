@@ -1,6 +1,8 @@
-def rem_words(text):
-    return list(filter(lambda x: 'abc' not in x, text.split()))
+def remove_words_with_abc(text):
+    return ' '.join(word for word in text.split() if 'abc' not in word)
 
 
-my_text = 'Write abc program thabct removes abcll words contabcining'
-print(*rem_words(my_text))
+if __name__ == '__main__':
+    my_text = 'Write abc program thabct removes abcll words contabcining'
+    result = remove_words_with_abc(my_text)
+    print(result)
