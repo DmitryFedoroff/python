@@ -1,18 +1,14 @@
-def get_int_input():
+def get_integer_list(prompt="Enter a list of integers: "):
     while True:
         try:
-            s = input()
-            return int(s)
+            return list(map(int, input(prompt).split()))
         except ValueError:
-            print("Input value is not integer. Please try again ...")
+            print("Invalid input. Please enter a list of valid integers.")
 
 
-def square_odd_nums(ls):
-    [print(x ** 2, end='\t') for x in ls if x % 2 > 0]
+def square_odd_numbers(numbers):
+    return ' '.join(str(x ** 2) for x in numbers if x % 2)
 
 
 if __name__ == '__main__':
-    n = get_int_input()
-    lst = list(range(n))
-    print(*lst)
-    square_odd_nums(lst)
+    print(square_odd_numbers(get_integer_list()))
