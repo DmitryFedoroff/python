@@ -1,17 +1,19 @@
 import re
 
 
-def get_float_input():
-    s = input()
-    if re.match(r'[+-]?[0-9]+\.[0-9]+', s) is None:
-        raise ValueError("Input is not floating point number. Please try again ...")
-    return float(s)
+def get_float_input(prompt: str = "Enter a float number: ") -> float:
+    float_pattern = re.compile(r'[+-]?[0-9]+\.[0-9]+')
+    while True:
+        user_input = input(prompt).strip()
+        if float_pattern.fullmatch(user_input):
+            return float(user_input)
+        print("Invalid input. Please enter a valid floating-point number.")
 
 
-def sum_digits(fnum):
-    return [sum(map(int, list(x))) for x in str(abs(fnum)).split('.')]
+def sum_digits_of_float(floating_number: float) -> list[int]:
+    return [sum(int(digit) for digit in part) for part in str(abs(floating_number)).split('.')]
 
 
 if __name__ == '__main__':
-    n = get_float_input()
-    print(*sum_digits(n))
+    user_float = get_float_input()
+    print(*sum_digits_of_float(user_float))
