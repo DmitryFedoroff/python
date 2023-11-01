@@ -1,21 +1,21 @@
 import random
 
 
-def get_int_input():
+def get_integer_input(prompt="Enter an integer: ") -> int:
     while True:
         try:
-            s = input()
-            return int(s)
+            return int(input(prompt).strip())
         except ValueError:
-            print("Input value is not integer. Please try again ...")
+            print("Invalid input. Please enter a valid integer.")
 
 
-def summ_odd_pos(ls):
-    return sum(ls[1::2])
+def sum_odd_indices_elements(numbers) -> int:
+    return sum(numbers[i] for i in range(1, len(numbers), 2))
 
 
 if __name__ == '__main__':
-    n = get_int_input()
-    lst = [random.randint(1, 10) for i in range(n)]
-    print(*lst)
-    print(summ_odd_pos(lst))
+    num_elements = get_integer_input("Enter the number of elements: ")
+    elements = (random.randint(1, 10) for _ in range(num_elements))
+    elements_list = list(elements)
+    print(*elements_list)
+    print(sum_odd_indices_elements(elements_list))
