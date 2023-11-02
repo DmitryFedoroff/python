@@ -1,16 +1,16 @@
-def get_int_input():
+def get_integer_input(prompt="Enter an integer: ") -> int:
     while True:
+        user_input = input(prompt).strip()
         try:
-            s = input()
-            return int(s)
+            return int(user_input)
         except ValueError:
-            print("Input value is not integer. Please try again ...")
+            print("Invalid input. Please enter a valid integer.")
 
 
-def summ_sequence(n):
-    return sum(round((1 + 1 / x) ** x, 2) for x in range(1, n + 1))
+def sum_of_sequence(num_terms: int) -> float:
+    return sum((1 + 1 / x) ** x for x in range(1, num_terms + 1))
 
 
 if __name__ == '__main__':
-    num = get_int_input()
-    print(summ_sequence(num))
+    number_of_terms = get_integer_input()
+    print(f"{sum_of_sequence(number_of_terms):.2f}")
