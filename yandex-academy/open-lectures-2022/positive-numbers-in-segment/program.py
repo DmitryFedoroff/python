@@ -13,3 +13,7 @@ def read_integer_list(prompt='Enter a list of integers: '):
             return list(map(int, input(prompt).split()))
         except ValueError:
             print('Invalid input. Please enter a list of valid integers.')
+
+
+def gather_queries(query_count):
+    return [read_integer_list(f'Enter indices for query {i + 1} (separated by space): ') for i in range(query_count)]
