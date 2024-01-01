@@ -29,3 +29,13 @@ def count_positives_in_segment(sequence, segment_queries):
 def display_results(results):
     for count in results:
         print(count)
+
+
+if __name__ == '__main__':
+    sequence_length = read_integer('Enter the length of the sequence: ')
+    number_sequence = read_integer_list('Enter the sequence of numbers (separated by space): ')
+    query_count = read_integer('Enter the number of queries: ')
+    segment_queries = gather_queries(query_count)
+    positive_counts = count_positives_in_segment(number_sequence, segment_queries)
+    print('Counts of positive numbers in each segment:')
+    display_results(positive_counts)
