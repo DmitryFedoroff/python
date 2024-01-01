@@ -17,3 +17,10 @@ def read_integer_list(prompt='Enter a list of integers: '):
 
 def gather_queries(query_count):
     return [read_integer_list(f'Enter indices for query {i + 1} (separated by space): ') for i in range(query_count)]
+
+
+def count_positives_in_segment(sequence, segment_queries):
+    cumulative_positives = [0]
+    for number in sequence:
+        cumulative_positives.append(cumulative_positives[-1] + (1 if number > 0 else 0))
+    return [cumulative_positives[end] - cumulative_positives[start - 1] for start, end in segment_queries]
