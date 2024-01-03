@@ -19,3 +19,12 @@ def multiply_pairs(numbers):
     if not numbers:
         return []
     return [numbers[i] * numbers[-1 - i] for i in range((len(numbers) + 1) // 2)]
+
+
+if __name__ == '__main__':
+    num = get_int_input("Enter the number of elements in the list: ")
+    start = get_int_input("Enter the start of the range: ")
+    end = get_int_input("Enter the end of the range: ")
+    random_list = generate_random_list(num, start, end)
+    print(f"Randomly generated list: {random_list}")
+    print(f"Product of pairs in the list: {multiply_pairs(random_list)}")
