@@ -1,3 +1,4 @@
+import random
 import re
 
 
@@ -17,3 +18,7 @@ def get_int_input(prompt="Enter a positive integer: "):
         if int_pattern.fullmatch(user_input) and int(user_input) > 0:
             return int(user_input)
         print("Invalid input. Please enter a positive integer.")
+
+
+def generate_random_floats(size, start, end):
+    return [round(random.uniform(start, end), 2) for _ in range(size)]
