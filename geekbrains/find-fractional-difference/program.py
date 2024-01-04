@@ -22,3 +22,10 @@ def get_int_input(prompt="Enter a positive integer: "):
 
 def generate_random_floats(size, start, end):
     return [round(random.uniform(start, end), 2) for _ in range(size)]
+
+
+def find_fractional_difference(numbers):
+    fractional_parts = [abs(num) - abs(int(num)) for num in numbers]
+    max_fraction = max(fractional_parts)
+    min_fraction = min(fractional_parts)
+    return max_fraction - min_fraction, max_fraction, min_fraction
