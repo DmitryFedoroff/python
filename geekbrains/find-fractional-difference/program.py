@@ -29,3 +29,16 @@ def find_fractional_difference(numbers):
     max_fraction = max(fractional_parts)
     min_fraction = min(fractional_parts)
     return max_fraction - min_fraction, max_fraction, min_fraction
+
+
+if __name__ == '__main__':
+    num = get_int_input('Enter the number of elements in the list: ')
+    start = get_float_input('Enter the start of the range (floating-point number): ')
+    end = get_float_input('Enter the end of the range (floating-point number): ')
+    random_list = generate_random_floats(num, start, end)
+    fractional_diff, max_fraction, min_fraction = find_fractional_difference(random_list)
+    print(f'List of random floating-point numbers: {random_list}')
+    print(
+        f'Difference between the maximum and minimum values of the fractional parts: '
+        f'{round(fractional_diff, 2)} (Max: {round(max_fraction, 2)}, Min: {round(min_fraction, 2)})'
+    )
