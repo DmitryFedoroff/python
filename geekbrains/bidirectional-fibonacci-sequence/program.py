@@ -16,3 +16,9 @@ def generate_fibonacci(n):
         fib_seq.append(fib_seq[-1] + fib_seq[-2])
     negafib_seq = [(-1)**(i + 1) * fib for i, fib in enumerate(fib_seq)]
     return negafib_seq[::-1] + fib_seq[1:]
+
+
+if __name__ == '__main__':
+    num = get_int_input("Enter the number of Fibonacci elements: ")
+    fibonacci_list = generate_fibonacci(num)
+    print(f"Fibonacci sequence with positive and negative indices: {fibonacci_list}")
