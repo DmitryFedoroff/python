@@ -20,3 +20,9 @@ def calculate_pi_to_precision(precision):
             pi_estimate -= 4 / k
         k += 2
     return pi_estimate
+
+
+if __name__ == '__main__':
+    precision = get_float_input("Enter the precision for Pi (e.g., 0.001): ")
+    pi_value = calculate_pi_to_precision(precision)
+    print(f"Pi to the specified precision {precision} is approximately: {round(pi_value, len(str(precision))-2)}")
