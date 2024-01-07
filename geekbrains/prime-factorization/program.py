@@ -19,3 +19,9 @@ def find_prime_factors(number):
             number //= divisor
         divisor += 1
     return factors
+
+
+if __name__ == '__main__':
+    num = get_int_input("Enter a number to find its prime factors: ")
+    prime_factors = find_prime_factors(num)
+    print(f'Prime factors of the number {num}: {prime_factors}')
