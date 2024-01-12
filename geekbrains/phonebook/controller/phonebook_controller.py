@@ -50,16 +50,13 @@ class PhonebookController:
 
         file_name = self.ensure_correct_file_extension(file_name, format_type)
 
+        success, message = False, ""
         if choice == 3:
-            if self.model.load_data(file_name, format_type):
-                self.view.display_message("Data imported successfully.")
-            else:
-                self.view.display_message("Data import failed.")
+            success, message = self.model.load_data(file_name, format_type)
         elif choice == 4:
-            if self.model.save_data(file_name, format_type):
-                self.view.display_message("Data exported successfully.")
-            else:
-                self.view.display_message("Data export failed.")
+            success, message = self.model.save_data(file_name, format_type)
+
+        self.view.display_message(message if not success else "Operation successful.")
 
     def ensure_correct_file_extension(self, file_name, format_type):
         if format_type == 'CSV' and not file_name.endswith('.csv'):
