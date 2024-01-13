@@ -11,6 +11,15 @@ class PhonebookModel:
     def get_all_contacts(self):
         return self.data
 
+    def search_contacts(self, search_choice, search_term):
+        results = []
+        for contact in self.data:
+            if search_choice == 1 and search_term.lower() in contact[0].lower():
+                results.append(contact)
+            elif search_choice == 2 and search_term in contact[1]:
+                results.append(contact)
+        return results
+
     def load_data(self, file_name, format_type):
         try:
             if format_type == 'CSV':
