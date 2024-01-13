@@ -16,9 +16,11 @@ class PhonebookController:
                 self.add_contact()
             elif choice == 2:
                 self.display_contacts()
-            elif choice in [3, 4]:
+            elif choice == 3:
+                self.search_contacts()
+            elif choice in [4, 5]:
                 self.handle_file_operations(choice)
-            elif choice == 5:
+            elif choice == 6:
                 break
 
     def add_contact(self):
@@ -40,6 +42,12 @@ class PhonebookController:
         contacts = self.model.get_all_contacts()
         self.view.display_data(contacts)
 
+    def search_contacts(self):
+        search_choice = self.view.get_search_choice()
+        search_term = self.view.get_user_input("Enter search term: ")
+        results = self.model.search_contacts(search_choice, search_term)
+        self.view.display_data(results)
+
     def handle_file_operations(self, choice):
         file_name = self.view.get_user_input("Enter file name: ")
         format_type = self.view.get_user_input("Enter file format (csv/JSON): ").upper()
@@ -51,9 +59,9 @@ class PhonebookController:
         file_name = self.ensure_correct_file_extension(file_name, format_type)
 
         success, message = False, ""
-        if choice == 3:
+        if choice == 4:
             success, message = self.model.load_data(file_name, format_type)
-        elif choice == 4:
+        elif choice == 5:
             success, message = self.model.save_data(file_name, format_type)
 
         self.view.display_message(message if not success else "Operation successful.")
