@@ -11,9 +11,9 @@ def validate_name(name):
 
 
 def get_menu_choice():
-    pattern = re.compile(r'^[1-5]$')
+    pattern = re.compile(r'^[1-6]$')
     while True:
-        choice = input("Enter your choice (1-5): ").strip()
+        choice = input("Enter your choice (1-6): ").strip()
         if pattern.fullmatch(choice):
             return int(choice)
-        print("Invalid input. Please enter a number between 1 and 5.")
+        print("Invalid input. Please enter a number between 1 and 6.")
