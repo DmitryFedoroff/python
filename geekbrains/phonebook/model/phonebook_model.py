@@ -1,3 +1,4 @@
+from typing import List, Tuple
 from utils import file_handler
 
 
@@ -5,22 +6,22 @@ class PhonebookModel:
     def __init__(self):
         self.data = []
 
-    def add_contact(self, contact):
+    def add_contact(self, contact: Tuple[str, str]):
         self.data.append(contact)
 
-    def get_all_contacts(self):
+    def get_all_contacts(self) -> List[Tuple[str, str]]:
         return self.data
 
-    def search_contacts(self, search_choice, search_term):
-        results = []
-        for contact in self.data:
-            if search_choice == 1 and search_term.lower() in contact[0].lower():
-                results.append(contact)
-            elif search_choice == 2 and search_term in contact[1]:
-                results.append(contact)
-        return results
+    def search_contacts(self, search_choice: int, search_term: str) -> List[Tuple[str, str]]:
+        search_function = (
+            (lambda contact: search_term.lower() in contact[0].lower())
+            if search_choice == 1
+            else (lambda contact: search_term in contact[1])
+        )
 
-    def load_data(self, file_name, format_type):
+        return [contact for contact in self.data if search_function(contact)]
+
+    def load_data(self, file_name: str, format_type: str) -> Tuple[bool, str]:
         try:
             if format_type == 'CSV':
                 self.data = file_handler.read_csv(file_name)
@@ -30,7 +31,7 @@ class PhonebookModel:
         except Exception as e:
             return False, f"Error occurred while loading data: {e}"
 
-    def save_data(self, file_name, format_type):
+    def save_data(self, file_name: str, format_type: str) -> Tuple[bool, str]:
         try:
             if format_type == 'CSV':
                 file_handler.write_csv(self.data, file_name)
