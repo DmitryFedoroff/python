@@ -4,29 +4,31 @@ from utils import file_handler
 
 class PhonebookModel:
     def __init__(self):
-        self.data = []
+        self.data = {}
 
     def add_contact(self, contact: Tuple[str, str]):
-        self.data.append(contact)
+        name, phone = contact
+        self.data[name] = phone
 
     def get_all_contacts(self) -> List[Tuple[str, str]]:
-        return self.data
+        return [(name, phone) for name, phone in self.data.items()]
 
     def search_contacts(self, search_choice: int, search_term: str) -> List[Tuple[str, str]]:
-        search_function = (
-            (lambda contact: search_term.lower() in contact[0].lower())
-            if search_choice == 1
-            else (lambda contact: search_term in contact[1])
-        )
-
-        return [contact for contact in self.data if search_function(contact)]
+        if search_choice == 1:
+            return [(name, self.data[name]) for name in self.data if search_term.lower() in name.lower()]
+        else:
+            return [(name, phone) for name, phone in self.data.items() if search_term in phone]
 
     def load_data(self, file_name: str, format_type: str) -> Tuple[bool, str]:
         try:
             if format_type == 'CSV':
-                self.data = file_handler.read_csv(file_name)
+                contacts = file_handler.read_csv(file_name)
             elif format_type == 'JSON':
-                self.data = file_handler.read_json(file_name)
+                contacts = file_handler.read_json(file_name)
+            if isinstance(contacts, list):
+                self.data = {name: phone for name, phone in contacts}
+            else:
+                self.data = contacts
             return True, "Data imported successfully"
         except Exception as e:
             return False, f"Error occurred while loading data: {e}"
