@@ -13,6 +13,12 @@ class PhonebookModel:
     def get_all_contacts(self) -> List[Tuple[str, str]]:
         return [(name, phone) for name, phone in self.data.items()]
 
+    def remove_contact(self, name: str) -> bool:
+        if name in self.data:
+            del self.data[name]
+            return True
+        return False
+
     def search_contacts(self, search_choice: int, search_term: str) -> List[Tuple[str, str]]:
         if search_choice == 1:
             return [(name, self.data[name]) for name in self.data if search_term.lower() in name.lower()]
