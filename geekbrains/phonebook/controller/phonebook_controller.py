@@ -17,10 +17,12 @@ class PhonebookController:
             elif choice == 2:
                 self.display_contacts()
             elif choice == 3:
+                self.remove_contact()
+            elif choice == 4:
                 self.search_contacts()
-            elif choice in [4, 5]:
-                self.handle_file_operations(choice)
-            elif choice == 6:
+            elif choice in [5, 6]:
+                self.handle_file_operations(choice - 1)
+            elif choice == 7:
                 break
 
     def add_contact(self):
@@ -41,6 +43,13 @@ class PhonebookController:
     def display_contacts(self):
         contacts = self.model.get_all_contacts()
         self.view.display_data(contacts)
+
+    def remove_contact(self):
+        name = self.view.get_user_input("Enter name of the contact to be removed: ")
+        if self.model.remove_contact(name):
+            self.view.display_message("Contact removed successfully.")
+        else:
+            self.view.display_message("Contact not found.")
 
     def search_contacts(self):
         search_choice = self.view.get_search_choice()
