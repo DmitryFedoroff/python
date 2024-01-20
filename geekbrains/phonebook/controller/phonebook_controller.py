@@ -42,7 +42,10 @@ class PhonebookController:
 
     def display_contacts(self):
         contacts = self.model.get_all_contacts()
-        self.view.display_data(contacts)
+        if not contacts:
+            self.view.display_message("No contacts available.")
+        else:
+            self.view.display_data(contacts)
 
     def remove_contact(self):
         name = self.view.get_user_input("Enter name of the contact to be removed: ")
@@ -55,7 +58,10 @@ class PhonebookController:
         search_choice = self.view.get_search_choice()
         search_term = self.view.get_user_input("Enter search term: ")
         results = self.model.search_contacts(search_choice, search_term)
-        self.view.display_data(results)
+        if not results:
+            self.view.display_message("No contacts found with the given search term.")
+        else:
+            self.view.display_data(results)
 
     def handle_file_operations(self, choice):
         file_name = self.view.get_user_input("Enter file name: ")
