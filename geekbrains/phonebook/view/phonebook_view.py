@@ -1,13 +1,14 @@
 class PhonebookView:
     def display_menu(self):
         menu_choices = [
-            '1 - Enter Data',
+            '1 - Add Contact',
             '2 - Show All Contacts',
             '3 - Remove Contact',
             '4 - Search Contacts',
-            '5 - Import Data',
-            '6 - Export Data',
-            '7 - Exit',
+            '5 - Edit Contact',
+            '6 - Import Data',
+            '7 - Export Data',
+            '8 - Exit'
         ]
         for choice in menu_choices:
             print(choice)
