@@ -48,3 +48,17 @@ class PhonebookModel:
             return True, "Data exported successfully"
         except Exception as e:
             return False, f"Error occurred while saving data: {e}"
+
+    def find_contact(self, name: str) -> bool:
+        return name in self.data
+
+    def edit_contact(self, name: str, new_name: str, new_phone: str):
+        if not new_name:
+            new_name = name
+        if not new_phone:
+            new_phone = self.data[name]
+
+        if new_name != name:
+            del self.data[name]
+
+        self.data[new_name] = new_phone
