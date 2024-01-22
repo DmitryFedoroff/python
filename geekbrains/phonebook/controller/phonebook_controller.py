@@ -20,9 +20,11 @@ class PhonebookController:
                 self.remove_contact()
             elif choice == 4:
                 self.search_contacts()
-            elif choice in [5, 6]:
-                self.handle_file_operations(choice - 1)
-            elif choice == 7:
+            elif choice == 5:
+                self.edit_contact()
+            elif choice in [6, 7]:
+                self.handle_file_operations(choice)
+            elif choice == 8:
                 break
 
     def add_contact(self):
@@ -63,6 +65,26 @@ class PhonebookController:
         else:
             self.view.display_data(results)
 
+    def edit_contact(self):
+        name = self.view.get_user_input("Enter the name of the contact to edit: ")
+        if not self.model.find_contact(name):
+            self.view.display_message("Contact not found.")
+            return
+
+        new_name = self.view.get_user_input("New Name (leave blank to keep unchanged): ")
+        new_phone = self.view.get_user_input("New Phone Number (leave blank to keep unchanged): ")
+
+        if new_name and not validate_name(new_name):
+            self.view.display_message("Invalid new name.")
+            return
+
+        if new_phone and not validate_phone_number(new_phone):
+            self.view.display_message("Invalid new phone number.")
+            return
+
+        self.model.edit_contact(name, new_name, new_phone)
+        self.view.display_message("Contact updated successfully.")
+
     def handle_file_operations(self, choice):
         file_name = self.view.get_user_input("Enter file name: ")
         format_type = self.view.get_user_input("Enter file format (csv/JSON): ").upper()
@@ -74,9 +96,9 @@ class PhonebookController:
         file_name = self.ensure_correct_file_extension(file_name, format_type)
 
         success, message = False, ""
-        if choice == 4:
+        if choice == 6:
             success, message = self.model.load_data(file_name, format_type)
-        elif choice == 5:
+        elif choice == 7:
             success, message = self.model.save_data(file_name, format_type)
 
         self.view.display_message(message if not success else "Operation successful.")
