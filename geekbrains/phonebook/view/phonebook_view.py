@@ -1,3 +1,6 @@
+from colorama import Fore
+
+
 class PhonebookView:
     def display_menu(self):
         menu_choices = [
@@ -10,8 +13,10 @@ class PhonebookView:
             '7 - Export Data',
             '8 - Exit'
         ]
+        print(Fore.CYAN + '=' * 30 + ' MENU ' + '=' * 30 + Fore.RESET)
         for choice in menu_choices:
-            print(choice)
+            print(Fore.YELLOW + choice + Fore.RESET)
+        print(Fore.CYAN + '=' * 65 + Fore.RESET)
 
     def get_search_choice(self):
         while True:
