@@ -30,8 +30,8 @@ class PhonebookView:
         return input(prompt)
 
     def display_data(self, data):
-        for contact in data:
-            print(', '.join(contact))
+        for contact_id, name, phone in data:
+            print(f'ID: {contact_id}, Name: {name}, Phone: {phone}')
 
     def display_message(self, message):
         print(message)
