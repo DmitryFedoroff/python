@@ -5,14 +5,14 @@ import json
 def read_csv(file_name):
     with open(file_name, mode='r', newline='', encoding='utf-8') as file:
         reader = csv.reader(file)
-        return {rows[0]: rows[1] for rows in reader}
+        return {row[0]: (row[1], row[2]) for row in reader}  # ID, Name, Phone
 
 
 def write_csv(data, file_name):
     with open(file_name, mode='w', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
-        for name, phone in data.items():
-            writer.writerow([name, phone])
+        for contact_id, (name, phone) in data.items():
+            writer.writerow([contact_id, name, phone])
 
 
 def read_json(file_name):
