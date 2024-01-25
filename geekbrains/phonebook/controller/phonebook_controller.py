@@ -38,9 +38,8 @@ class PhonebookController:
             self.view.display_message("Invalid phone number.")
             return
 
-        contact = [name, phone]
-        self.model.add_contact(contact)
-        self.view.display_message("Contact added.")
+        contact_id = self.model.add_contact((name, phone))
+        self.view.display_message(f"Contact added with ID: {contact_id}")
 
     def display_contacts(self):
         contacts = self.model.get_all_contacts()
@@ -50,8 +49,8 @@ class PhonebookController:
             self.view.display_data(contacts)
 
     def remove_contact(self):
-        name = self.view.get_user_input("Enter name of the contact to be removed: ")
-        if self.model.remove_contact(name):
+        contact_id = self.view.get_user_input("Enter ID of the contact to be removed: ")
+        if self.model.remove_contact(contact_id):
             self.view.display_message("Contact removed successfully.")
         else:
             self.view.display_message("Contact not found.")
@@ -66,8 +65,8 @@ class PhonebookController:
             self.view.display_data(results)
 
     def edit_contact(self):
-        name = self.view.get_user_input("Enter the name of the contact to edit: ")
-        if not self.model.find_contact(name):
+        contact_id = self.view.get_user_input("Enter the ID of the contact to edit: ")
+        if not self.model.find_contact(contact_id):
             self.view.display_message("Contact not found.")
             return
 
@@ -82,7 +81,7 @@ class PhonebookController:
             self.view.display_message("Invalid new phone number.")
             return
 
-        self.model.edit_contact(name, new_name, new_phone)
+        self.model.edit_contact(contact_id, new_name, new_phone)
         self.view.display_message("Contact updated successfully.")
 
     def handle_file_operations(self, choice):
