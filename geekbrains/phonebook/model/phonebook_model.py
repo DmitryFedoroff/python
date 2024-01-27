@@ -55,3 +55,6 @@ class PhonebookModel:
         if contact_id in self.data:
             name, phone = self.data[contact_id]
             self.data[contact_id] = (new_name if new_name else name, new_phone if new_phone else phone)
+
+    def is_phone_number_unique(self, phone_number: str) -> bool:
+        return not any(phone == phone_number for _, (_, phone) in self.data.items())
