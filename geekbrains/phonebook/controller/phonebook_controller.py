@@ -38,6 +38,10 @@ class PhonebookController:
             self.view.display_message("Invalid phone number.")
             return
 
+        if not self.model.is_phone_number_unique(phone):
+            self.view.display_message("This phone number is already in use. Please enter a unique number.")
+            return
+
         contact_id = self.model.add_contact((name, phone))
         self.view.display_message(f"Contact added with ID: {contact_id}")
 
@@ -79,6 +83,10 @@ class PhonebookController:
 
         if new_phone and not validate_phone_number(new_phone):
             self.view.display_message("Invalid new phone number.")
+            return
+
+        if new_phone and not self.model.is_phone_number_unique(new_phone):
+            self.view.display_message("This phone number is already in use. Please enter a unique number.")
             return
 
         self.model.edit_contact(contact_id, new_name, new_phone)
