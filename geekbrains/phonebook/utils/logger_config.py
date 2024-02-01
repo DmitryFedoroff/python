@@ -4,13 +4,13 @@ import logging
 def get_logger(name):
     logger = logging.getLogger(name)
     logger.setLevel(logging.DEBUG)
+    log_format = '%(asctime)s - %(levelname)s - %(name)s : %(message)s'
+    log_file_name = 'phonebook.log'
 
-    file_handler = logging.FileHandler('phonebook.log')
-
-    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(name)s : %(message)s')
-    file_handler.setFormatter(formatter)
-
-    if not logger.handlers:
+    if not any(isinstance(handler, logging.FileHandler) and handler.baseFilename.endswith(log_file_name) for handler in logger.handlers):
+        file_handler = logging.FileHandler(log_file_name)
+        formatter = logging.Formatter(log_format)
+        file_handler.setFormatter(formatter)
         logger.addHandler(file_handler)
 
     return logger
