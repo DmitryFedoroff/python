@@ -7,25 +7,27 @@ class PhonebookController:
     def __init__(self):
         self.model = PhonebookModel()
         self.view = PhonebookView()
+        self.actions = {
+            1: self.add_contact,
+            2: self.display_contacts,
+            3: self.remove_contact,
+            4: self.search_contacts,
+            5: self.edit_contact,
+            6: lambda: self.handle_file_operations(6),
+            7: lambda: self.handle_file_operations(7)
+        }
 
     def start(self):
         while True:
             self.view.display_menu()
             choice = get_menu_choice()
-            if choice == 1:
-                self.add_contact()
-            elif choice == 2:
-                self.display_contacts()
-            elif choice == 3:
-                self.remove_contact()
-            elif choice == 4:
-                self.search_contacts()
-            elif choice == 5:
-                self.edit_contact()
-            elif choice in [6, 7]:
-                self.handle_file_operations(choice)
-            elif choice == 8:
+            if choice == 8:
                 break
+            action = self.actions.get(choice, self.invalid_choice)
+            action()
+
+    def invalid_choice(self):
+        self.view.display_message("Invalid choice. Please try again.")
 
     def add_contact(self):
         name = self.view.get_user_input("Name: ")
