@@ -1,17 +1,17 @@
-from typing import List, Tuple, Dict
+from typing import List, Tuple, Dict, Optional
 from utils import file_handler
 from utils.logger_config import get_logger
 import uuid
 
 
 class PhonebookModel:
-    def __init__(self):
+    def __init__(self) -> None:
         self.logger = get_logger(__name__)
         self.data: Dict[str, Tuple[str, str]] = {}
 
     def add_contact(self, contact: Tuple[str, str]) -> str:
         try:
-            contact_id = str(uuid.uuid4())
+            contact_id: str = str(uuid.uuid4())
             self.data[contact_id] = contact
             self.logger.info(f"Contact added with ID: {contact_id}")
             return contact_id
@@ -40,6 +40,7 @@ class PhonebookModel:
 
     def search_contacts(self, search_choice: int, search_term: str) -> List[Tuple[str, str, str]]:
         try:
+            results: List[Tuple[str, str, str]]
             if search_choice == 1:
                 results = [(contact_id, name, phone) for contact_id, (name, phone) in self.data.items() if
                            search_term.lower() in name.lower()]
@@ -57,6 +58,7 @@ class PhonebookModel:
 
     def load_data(self, file_name: str, format_type: str) -> Tuple[bool, str]:
         try:
+            contacts: Dict[str, Tuple[str, str]]
             if format_type == 'CSV':
                 contacts = file_handler.read_csv(file_name)
             elif format_type == 'JSON':
@@ -91,7 +93,7 @@ class PhonebookModel:
             self.logger.error(f"Error finding contact with ID: {contact_id}: {e}")
             raise
 
-    def edit_contact(self, contact_id: str, new_name: str, new_phone: str):
+    def edit_contact(self, contact_id: str, new_name: Optional[str], new_phone: Optional[str]) -> None:
         try:
             if contact_id in self.data:
                 name, phone = self.data[contact_id]
