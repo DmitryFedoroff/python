@@ -1,7 +1,7 @@
 from controller.phonebook_controller import PhonebookController
 
 
-def main():
+def main() -> None:
     controller = PhonebookController()
     controller.start()
 
