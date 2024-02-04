@@ -6,7 +6,7 @@ NAME_PATTERN = re.compile(r'^[a-zA-Z\s]+$')
 MENU_CHOICE_PATTERN = re.compile(r'^[1-8]$')
 
 
-def validate_phone_number(phone_number):
+def validate_phone_number(phone_number: str) -> bool:
     if not phone_number or phone_number.isspace():
         print("Phone number cannot be empty or just whitespace.")
         return False
@@ -17,7 +17,7 @@ def validate_phone_number(phone_number):
     return True
 
 
-def validate_name(name):
+def validate_name(name: str) -> bool:
     if not name or name.isspace():
         print("Name cannot be empty or just whitespace.")
         return False
@@ -27,7 +27,7 @@ def validate_name(name):
     return True
 
 
-def get_menu_choice():
+def get_menu_choice() -> int:
     while True:
         choice = input("Enter your choice (1-8): ").strip()
         if MENU_CHOICE_PATTERN.fullmatch(choice):
