@@ -21,13 +21,21 @@ class PhonebookView:
             print(Fore.YELLOW + choice + Fore.RESET)
         print(Fore.CYAN + '=' * 65 + Fore.RESET)
 
-    def get_search_choice(self) -> int:
+    def display_search_options(self) -> None:
+        print("Choose search parameter:\n1 - Name\n2 - Phone Number")
+
+    def get_user_choice(self, valid_choices: List[str], prompt: str) -> str:
         while True:
-            print("Choose search parameter:\n1 - Name\n2 - Phone Number")
-            choice: str = input("Your choice: ").strip()
-            if choice in ['1', '2']:
-                return int(choice)
-            print("Invalid input. Please choose 1 or 2.")
+            choice = input(prompt).strip()
+            if choice in valid_choices:
+                return choice
+            else:
+                print(f"Invalid input. Please choose one of the following: {', '.join(valid_choices)}")
+
+    def get_search_choice(self) -> int:
+        self.display_search_options()
+        choice = self.get_user_choice(['1', '2'], "Your choice: ")
+        return int(choice)
 
     def get_user_input(self, prompt: str) -> str:
         return input(prompt)
