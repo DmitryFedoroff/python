@@ -21,10 +21,10 @@ class PhonebookController:
     def start(self) -> None:
         while True:
             self.view.display_menu()
-            choice: int = get_menu_choice()
-            if choice == 8:
+            choice: int = self.view.get_user_choice([str(i) for i in range(1, 9)], "Enter your choice (1-8): ")
+            if choice == '8':
                 break
-            action: Callable[[], None] = self.actions.get(choice, self.invalid_choice)
+            action: Callable[[], None] = self.actions.get(int(choice), self.invalid_choice)
             action()
 
     def invalid_choice(self) -> None:
@@ -63,7 +63,8 @@ class PhonebookController:
             self.view.display_message("Contact not found.")
 
     def search_contacts(self) -> None:
-        search_choice: int = self.view.get_search_choice()
+        self.view.display_search_options()
+        search_choice: int = int(self.view.get_user_choice(['1', '2'], "Choose search parameter (1- Name, 2- Phone Number): "))
         search_term: str = self.view.get_user_input("Enter search term: ")
         results = self.model.search_contacts(search_choice, search_term)
         if not results:
@@ -112,11 +113,11 @@ class PhonebookController:
         elif choice == 7:
             success, message = self.model.save_data(file_name, format_type)
 
-        self.view.display_message(message if not success else "Operation successful.")
+        self.view.display_message(message if success else "Operation failed.")
 
     def ensure_correct_file_extension(self, file_name: str, format_type: str) -> str:
         if format_type == 'CSV' and not file_name.endswith('.csv'):
             return file_name + '.csv'
-        elif format_type == 'JSON' and not file_name.endswith('.JSON'):
-            return file_name + '.JSON'
+        elif format_type == 'JSON' and not file_name.endswith('.json'):
+            return file_name + '.json'
         return file_name
