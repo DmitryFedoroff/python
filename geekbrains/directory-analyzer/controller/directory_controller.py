@@ -2,6 +2,7 @@ from model.directory_model import DirectoryModel
 from view.directory_view import DirectoryView
 import json
 import csv
+import pickle
 import os
 from typing import Dict, Any
 
@@ -30,3 +31,8 @@ class DirectoryController:
             writer.writerow(['Path', 'Type', 'Name', 'Size', 'Parent Directory'])
             for key, value in data.items():
                 writer.writerow([key, value['type'], value['name'], value['size'], value['parent_directory']])
+
+    def _write_to_pickle(self, data: Dict[str, Any], directory: str, filename: str) -> None:
+        filepath = os.path.join(directory, f'{filename}.pickle')
+        with open(filepath, 'wb') as file:
+            pickle.dump(data, file)
